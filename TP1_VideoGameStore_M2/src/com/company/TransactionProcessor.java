@@ -23,17 +23,28 @@ public class TransactionProcessor {
     }
     
     public void CheckOut(String custom, Date dueDate, String  item){
-        Client customer = mapcus.get(custom);
-        StockItem it = mapstk.get(item);
-        RentedItem ri = new RentedItem(customer.getCustomerID(),it.getItemID(),dueDate);
-        customer.setAccountBalance(customer.getAccountBalance() + it.getRentalPrice());
-        listrented.add(ri);
+        try {
+            Client customer = mapcus.get(custom);
+            StockItem it = mapstk.get(item);
+            RentedItem ri = new RentedItem(customer.getCustomerID(),it.getItemID(),dueDate);
+            customer.setAccountBalance(customer.getAccountBalance() + it.getRentalPrice());
+            listrented.add(ri);
+        }
+        catch (NullPointerException e){
+            System.out.println("No data");
+        }
+
     }
     public void CheckIn(String custom, int itemID ,String item){
-        listrented.removeIf( T -> (T.getItemID() == itemID));
-        Client customer = mapcus.get(custom);
-        StockItem it = mapstk.get(item);
-        customer.setAccountBalance(customer.getAccountBalance() - it.getRentalPrice());
+        try {
+            listrented.removeIf( T -> (T.getItemID() == itemID));
+            Client customer = mapcus.get(custom);
+            StockItem it = mapstk.get(item);
+            customer.setAccountBalance(customer.getAccountBalance() - it.getRentalPrice());
+        }
+        catch (NullPointerException e){
+            System.out.println("No data");
+        }
     }
     public void AddCustomer( String nom ){
         if (!mapcus.containsKey(nom)){

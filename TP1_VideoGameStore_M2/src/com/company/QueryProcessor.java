@@ -8,7 +8,7 @@ public class QueryProcessor {
     private  Map<String, Client> mapcus;
     private Map<String, StockItem> mapstk;
     private List<RentedItem> listrented;
-    
+
     public int FindByTitle(String titre){
         int found = 0;
         for (Map.Entry<String, StockItem> entry : mapstk.entrySet()) {
@@ -19,7 +19,6 @@ public class QueryProcessor {
     public List<Film> ndByActor(String nomActeur){
         List<Film> mesfilms= new ArrayList<Film>();
         for (Map.Entry<String, StockItem> entry : mapstk.entrySet()) {
-            System.out.println(entry.getValue().getClass().getSimpleName());
             if( entry.getValue().getClass().getSimpleName().equals("Film") ) {
                 Film film = (Film) entry.getValue();
                 if (film.getActor().equalsIgnoreCase(nomActeur)) {
@@ -36,18 +35,24 @@ public class QueryProcessor {
         this.listrented = listrented;
     }
 
-    public int IsCheckedOut(StockItem item){
+    public int IsCheckedOut(int itemID){
         int found = 0;
         Iterator<RentedItem> rentediterator = listrented.iterator();
         while(rentediterator.hasNext()) {
-            if (rentediterator.next().getItemID() == item.getItemID()){
+            if (rentediterator.next().getItemID() == itemID){
                 found = 1;break;
             }
         }
         return found;
     }
     public float Solde(String client){
-        return mapcus.get(client).getAccountBalance();
+        try {
+            return mapcus.get(client).getAccountBalance();
+        }
+        catch (NullPointerException e){
+            System.out.println("No client found");
+        }
+       return 0;
     }
     public List<RentedItem> OverdueItems(){
         Date today = new Date();

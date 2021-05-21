@@ -4,8 +4,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import sun.net.TelnetOutputStream;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -36,10 +34,10 @@ public class Main {
             System.out.println(filmsIterator.next().getTitle());
         }
         // Test 3
-        System.out.println(query.IsCheckedOut(a));
+        System.out.println(query.IsCheckedOut(1));
         RentedItem ar =new RentedItem(1,1,new Date(0));
         rented.add(ar);
-        System.out.println(query.IsCheckedOut(a));
+        System.out.println(query.IsCheckedOut(1));
         // Test 4
         System.out.println(query.Solde("Cherifa"));
         // Test 5
@@ -52,7 +50,7 @@ public class Main {
         RentedItem cr =new RentedItem(1,3,cal.getTime());
         rented.add(cr);
         System.out.println(query.OverdueItems());
-        System.out.println(query.IsCheckedOut(c));
+        System.out.println(query.IsCheckedOut(3));
     
     //**********************************************************************************************************************************************
         System.out.println("-----------------------------------------------------------------------------------------------------------------");
