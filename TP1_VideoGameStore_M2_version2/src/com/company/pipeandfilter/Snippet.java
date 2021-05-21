@@ -1,7 +1,10 @@
 package com.company.pipeandfilter;
+import javafx.application.Application;
+import javafx.stage.Stage;
+
 import java.util.Scanner;
 
-public class Snippet {
+public class Snippet  {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         Pipe p1 = new BlockingQueue();

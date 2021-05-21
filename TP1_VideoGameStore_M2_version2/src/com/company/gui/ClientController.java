@@ -38,13 +38,8 @@ public class ClientController implements Initializable {
     ObservableList<Client> client_list;
     int index =-1;
 
-    public void add_client(){
-        try{
-            this.tp.AddCustomer(client_name_input.getText());
-            JOptionPane.showMessageDialog(null,"Client ajouté !");
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(null,e);
-        }
+    public String add_client(){
+        return client_name_input.getText();
     }
 
     @Override
