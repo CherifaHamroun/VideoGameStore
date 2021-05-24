@@ -16,14 +16,15 @@ public class Snippet  {
         Thread th0 = new Thread(a0);
         Thread th1 = new Thread(a1);
         Thread th2 = new Thread(a2);
+        th0.run();
+
         while (true){
             //Scanner request = new Scanner(System.in);
             //String my_str = request.nextLine();
             //p1.dataIN(my_str);
-            th0.run();
             th1.run();
             th2.run();
-            System.out.println(p3.dataOUT());
+            //System.out.println(p3.dataOUT());
         }
     }
 }

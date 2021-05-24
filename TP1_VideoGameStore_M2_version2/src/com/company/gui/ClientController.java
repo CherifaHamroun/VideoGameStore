@@ -4,9 +4,12 @@ import com.company.pipeandfilter.Snippet;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -26,7 +29,7 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 
-public class ClientController implements Initializable {
+public class ClientController implements Initializable,Gestionnaire{
 
     QueryProcessor qp = new QueryProcessor();
     TransactionProcessor tp = new TransactionProcessor();
@@ -48,14 +51,22 @@ public class ClientController implements Initializable {
     ObservableList<Client> client_list;
     int index =-1;
 
-    public void add_client(){
+    public void add_client2(){
         Snippet.p1.dataIN("AddCustomer"+ " "+client_name_input.getText());
+    }
+    public void OnActionGoBack(ActionEvent e) throws IOException {
+        changeSceneButtonPushed(e,"Menu.fxml");
+    }
+    public void add_client(ActionEvent e) throws IOException {
+        Snippet.p1.dataIN("AddCustomer"+ " "+client_name_input.getText());
+        changeSceneButtonPushed(e,"clientList.fxml");
+
     }
     public void goBack(){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("Menu.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 630, 400);
+            Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
             stage.setTitle("New Window");
             stage.setScene(scene);

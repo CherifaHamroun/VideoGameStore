@@ -20,8 +20,8 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Button layoutX="248.0" layoutY="83.0" mnemonicParsing="false" onAction="#voirClient" text="Liste des  clients" />
-                  <Button layoutX="252.0" layoutY="139.0" mnemonicParsing="false" onAction="#voirItems" text="Liste des items" />
+                  <Button  layoutX="248.0" layoutY="83.0" mnemonicParsing="false" onAction="#OnActionAfficherClient" text="Liste des  clients" />
+                  <Button layoutX="252.0" layoutY="139.0" mnemonicParsing="false" onAction="#OnActionAfficherItems" text="Liste des items" />
                </children>
             </AnchorPane>
         </items>

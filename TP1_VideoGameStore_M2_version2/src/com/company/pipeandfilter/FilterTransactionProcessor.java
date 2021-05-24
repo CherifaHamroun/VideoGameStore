@@ -45,7 +45,8 @@ public  class FilterTransactionProcessor extends Filter {
             case "FindByTitle":
                 // code block
                 Integer film = this.query.FindByTitle(params[1]);
-                sendData(params[0] + " " + film.toString());
+                if (film == 1) sendData(params[0] + " " + params[1] );
+                else sendData("NoData");
                 break;
             case "ndByActor":
                 // code block
@@ -62,6 +63,7 @@ public  class FilterTransactionProcessor extends Filter {
                 // code block
                 Integer response = this.query.IsCheckedOut(params[1]);
                 sendData(response.toString());
+
                 break;
             case "Solde":
                 // code block
@@ -71,15 +73,18 @@ public  class FilterTransactionProcessor extends Filter {
             case "OverdueItems":
                 // code block
                 List<RentedItem> over = this.query.OverdueItems();
+                System.out.println(over);
                 Iterator<RentedItem> overIterator = over.iterator();
-                Iterator<StockItem> stkIterator = this.tran.getStockList().values().iterator();
+                //Iterator<StockItem> stkIterator = this.tran.getStockList().values().iterator();
                 String overdues = "OverdueItems";
                 RentedItem a;
                 StockItem b;
                 while(overIterator.hasNext()) {
                     a = overIterator.next();
+                    Iterator<StockItem> stkIterator = this.tran.getStockList().values().iterator();
                     while (stkIterator.hasNext()){
                         b = stkIterator.next();
+                        System.out.println(a.getItemID() == b.getItemID());
                         if (a.getItemID() == b.getItemID()) {
                             overdues = overdues + " " + b.getTitle();
                         }
@@ -94,27 +99,27 @@ public  class FilterTransactionProcessor extends Filter {
                 System.out.println(sDate1);
                 Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(sDate1);
                 this.tran.CheckOut(params[1],date1,params[2]);
-                sendData("Done");
+                //sendData("Done");
                 break;
             case "CheckIn":
                 // code block
                 this.tran.CheckIn(params[1],params[2]);
                 System.out.println(params[2]);
-                sendData("Done");
+                //sendData("Done");
                 break;
             case "AddCustomer":
                 // code block
                     this.tran.AddCustomer(params[1]);
-                    sendData("Done");
+                   // sendData("Done");
                 break;
             case "AddStock":
                 // code block
                 this.tran.AddStock(params[1],Float.parseFloat(params[2]),params[3],Integer.parseInt(params[4]));
-                sendData("Done");
+                //sendData("Done");
                 break;
             default:
                 // code block
-                sendData("No Operation");
+                //sendData("No Operation");
                 break;
         }
     }

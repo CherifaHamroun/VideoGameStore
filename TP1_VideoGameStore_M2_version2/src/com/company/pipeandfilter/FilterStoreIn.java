@@ -21,9 +21,6 @@ public  class FilterStoreIn extends Filter {
 
     Pipe _dataINPipe;
     Pipe _dataOUTPipe;
-
-    ClientController cc = new ClientController();
-
     public FilterStoreIn(Pipe _dataINPipe, Pipe _dataOUTPipe) {
         super();
         this._dataINPipe = _dataINPipe;

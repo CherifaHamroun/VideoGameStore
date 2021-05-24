@@ -21,11 +21,11 @@ public class QueryProcessor {
     }
     public int FindByTitle(String titre){
         int found = 0;
-        for (Map.Entry<String, StockItem> entry : this.mapstk.entrySet()) {
-            if( entry.getValue().getTitle().equalsIgnoreCase(titre) ) {
 
-                found = 1;break;}
+        for (Map.Entry<String, StockItem> entry : mapstk.entrySet()) {
+            if( entry.getValue().getTitle().equalsIgnoreCase(titre) ) { found = 1;break;}
         }
+
         return found;
     }
     public List<Film> ndByActor(String nomActeur){
