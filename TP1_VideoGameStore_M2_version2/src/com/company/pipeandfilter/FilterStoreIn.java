@@ -56,7 +56,7 @@ public  class FilterStoreIn extends Filter {
             Parent root;
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("../gui/itemList.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("../gui/Menu.fxml"));
                 root = (Parent) fxmlLoader.load();
                 Scene scene = new Scene(root, 630, 400);
                 Stage stage = new Stage();

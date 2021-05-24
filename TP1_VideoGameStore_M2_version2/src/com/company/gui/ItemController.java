@@ -76,17 +76,16 @@ public class ItemController implements Initializable {
 
     public void overDueItems() throws Exception{
         try {
-            Snippet.p1.dataIN("OverdueItems");
+
             FXMLLoader fxmlLoader = new FXMLLoader();
+
             fxmlLoader.setLocation(getClass().getResource("overdueItemsList.fxml"));
-            /*
-             * if "fx:controller" is not set in fxml
-             * fxmlLoader.setController(NewWindowController);
-             */
-            Scene scene = new Scene(fxmlLoader.load(), 630, 400);
+
+            Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
             stage.setTitle("New Window");
             stage.setScene(scene);
+
             stage.show();
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());
@@ -110,7 +109,7 @@ public class ItemController implements Initializable {
     }
     public void CheckOUT() {
         System.out.println(due_date.getValue());
-        Snippet.p1.dataIN("CheckOut"+ " "+customer_check_name.getText()+ " "+ item_check_title.getText()+ " " + due_date.toString());
+        Snippet.p1.dataIN("CheckOut"+ " "+customer_check_name.getText()+ " "+ item_check_title.getText()+ " " + due_date.getValue().toString());
     }
 
     public void ndByActor(){
@@ -118,6 +117,20 @@ public class ItemController implements Initializable {
     }
     public void FindByTitle(){
         Snippet.p1.dataIN("FindByTitle" + " " + param_found_input);
+    }
+    public void goBack(){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("Menu.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 630, 400);
+            Stage stage = new Stage();
+            stage.setTitle("New Window");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

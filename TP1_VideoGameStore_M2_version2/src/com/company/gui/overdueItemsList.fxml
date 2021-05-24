@@ -8,33 +8,33 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.gui.OverdueItemsListController">
-   <children>
-      <SplitPane dividerPositions="0.19126506024096387" layoutX="170.0" layoutY="59.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-               <children>
-                  <Text layoutX="208.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OVER DUE ITEMS">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="344.0" prefWidth="599.0">
-               <children>
-                  <TableView fx:id="Items" layoutX="188.0" layoutY="-7.0" prefHeight="319.2" prefWidth="599.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <columns>
-                      <TableColumn fx:id="item_id" prefWidth="75.0" text="ID" />
-                      <TableColumn fx:id="item_title" prefWidth="117.60003662109375" text="Titre" />
-                        <TableColumn fx:id="item_price" prefWidth="135.19996643066406" text="Rental price" />
-                        <TableColumn fx:id="item_type" prefWidth="63.99993896484375" text="Type" />
-                        <TableColumn fx:id="item_parametre" prefWidth="104.79998779296875" text="Plateform/actor" />
-                        <TableColumn fx:id="is_out" prefWidth="104.00006103515625" text="Is checked out" />
-                    </columns>
-                  </TableView>
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-   </children>
+    <children>
+        <SplitPane dividerPositions="0.19126506024096387" layoutX="170.0" layoutY="59.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <children>
+                        <Text layoutX="208.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OVER DUE ITEMS">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="344.0" prefWidth="599.0">
+                    <children>
+                        <TableView fx:id="Items" layoutX="188.0" layoutY="-7.0" prefHeight="319.2" prefWidth="599.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <columns>
+                                <TableColumn fx:id="item_id" prefWidth="75.0" text="ID" />
+                                <TableColumn fx:id="item_title" prefWidth="117.60003662109375" text="Titre" />
+                                <TableColumn fx:id="item_price" prefWidth="135.19996643066406" text="Rental price" />
+                                <TableColumn fx:id="item_type" prefWidth="63.99993896484375" text="Type" />
+                                <TableColumn fx:id="item_parametre" prefWidth="104.79998779296875" text="Plateform/actor" />
+                                <TableColumn fx:id="is_out" prefWidth="104.00006103515625" text="Is checked out" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
 </AnchorPane>

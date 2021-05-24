@@ -44,12 +44,13 @@ public  class FilterTransactionProcessor extends Filter {
         switch(params[0]) {
             case "FindByTitle":
                 // code block
-                Integer film = query.FindByTitle(params[1]);
+                Integer film = this.query.FindByTitle(params[1]);
                 sendData(params[0] + " " + film.toString());
                 break;
             case "ndByActor":
                 // code block
-                List<Film> films = query.ndByActor(params[1]);
+
+                List<Film> films = this.query.ndByActor(params[1]);
                 Iterator<Film> filmsIterator = films.iterator();
                 String data = params[0];
                 while(filmsIterator.hasNext()) {
@@ -59,44 +60,56 @@ public  class FilterTransactionProcessor extends Filter {
                 break;
             case "IsCheckedOut":
                 // code block
-                Integer response = query.IsCheckedOut(params[1]);
+                Integer response = this.query.IsCheckedOut(params[1]);
                 sendData(response.toString());
                 break;
             case "Solde":
                 // code block
-                Float solde = query.Solde(params[1]);
+                Float solde = this.query.Solde(params[1]);
                 sendData(solde.toString());
                 break;
             case "OverdueItems":
                 // code block
-                List<RentedItem> over = query.OverdueItems();
+                List<RentedItem> over = this.query.OverdueItems();
                 Iterator<RentedItem> overIterator = over.iterator();
+                Iterator<StockItem> stkIterator = this.tran.getStockList().values().iterator();
                 String overdues = "OverdueItems";
+                RentedItem a;
+                StockItem b;
                 while(overIterator.hasNext()) {
-                    overdues = overdues + " " + overIterator.next().getItemID();
+                    a = overIterator.next();
+                    while (stkIterator.hasNext()){
+                        b = stkIterator.next();
+                        if (a.getItemID() == b.getItemID()) {
+                            overdues = overdues + " " + b.getTitle();
+                        }
+                    }
+
                 }
                 sendData(overdues);
                 break;
             case "CheckOut":
                 // code block
                 String sDate1=params[3];
-                Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
-                tran.CheckOut(params[1],date1,params[2]);
+                System.out.println(sDate1);
+                Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(sDate1);
+                this.tran.CheckOut(params[1],date1,params[2]);
                 sendData("Done");
                 break;
             case "CheckIn":
                 // code block
-                tran.CheckIn(params[1],params[2]);
+                this.tran.CheckIn(params[1],params[2]);
+                System.out.println(params[2]);
                 sendData("Done");
                 break;
             case "AddCustomer":
                 // code block
-                    tran.AddCustomer(params[1]);
+                    this.tran.AddCustomer(params[1]);
                     sendData("Done");
                 break;
             case "AddStock":
                 // code block
-                tran.AddStock(params[1],Float.parseFloat(params[2]),params[3],Integer.parseInt(params[4]));
+                this.tran.AddStock(params[1],Float.parseFloat(params[2]),params[3],Integer.parseInt(params[4]));
                 sendData("Done");
                 break;
             default:
