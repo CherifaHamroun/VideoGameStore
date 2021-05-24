@@ -110,4 +110,19 @@ public class ItemController implements Initializable {
         ObservableList<StockItem> items_list = FXCollections.observableArrayList(values);
         Items.setItems(items_list);
     }
+
+    public void goBack(){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("Menu.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 630, 400);
+            Stage stage = new Stage();
+            stage.setTitle("New Window");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new Window.", e);
+        }
+    }
 }

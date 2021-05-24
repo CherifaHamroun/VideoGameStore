@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.gui.ItemController">
+   <children>
+      <AnchorPane layoutX="72.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox layoutX="89.0" layoutY="86.0" prefHeight="600.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane prefHeight="501.0" prefWidth="600.0">
+                     <children>
+                        <SplitPane dividerPositions="0.1986081370449679" layoutX="200.0" layoutY="72.0" orientation="VERTICAL" prefHeight="375.2" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <Text layoutX="318.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LIST DES ITEMS">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Button layoutX="43.0" layoutY="35.0" mnemonicParsing="false" onAction="#goBack" text="Go back to menu" />
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="464.0" prefWidth="799.0">
+                                 <children>
+                                    <SplitPane dividerPositions="0.27106318956870606" layoutX="125.0" layoutY="48.0" prefHeight="377.0" prefWidth="799.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <items>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                             <children>
+                                                <SplitPane dividerPositions="0.18306288032454363" layoutX="14.0" orientation="VERTICAL" prefHeight="396.0" prefWidth="213.6" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                  <items>
+                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                                         <children>
+                                                            <Button layoutX="44.0" layoutY="22.0" mnemonicParsing="false" onAction="#overDueItems" text="Show overdue items" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                                         <children>
+                                                            <SplitPane dividerPositions="0.378463476070529" layoutX="26.0" layoutY="34.0" orientation="VERTICAL" prefHeight="319.2" prefWidth="212.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                              <items>
+                                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="116.0" prefWidth="210.0">
+                                                                     <children>
+                                                                        <TextField fx:id="param_found_input" layoutX="31.0" layoutY="14.0" promptText="Title or Actor" />
+                                                                        <Button layoutX="16.0" layoutY="59.0" mnemonicParsing="false" text="Find by title" />
+                                                                        <Button layoutX="113.0" layoutY="59.0" mnemonicParsing="false" text="Find by actor" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                                                     <children>
+                                                                        <TextField fx:id="title_input" layoutX="25.0" layoutY="12.0" promptText="Title" />
+                                                                        <TextField fx:id="price_input" layoutX="25.0" layoutY="46.0" promptText="Rental price" />
+                                                                        <TextField fx:id="type_input" layoutX="25.0" layoutY="79.0" promptText="Type : Film or game" />
+                                                                        <TextField fx:id="param_input" layoutX="25.0" layoutY="112.0" promptText="Actor or plateform" />
+                                                                        <Button layoutX="67.0" layoutY="143.0" mnemonicParsing="false" text="Add item" />
+                                                                     </children>
+                                                                  </AnchorPane>
+                                                              </items>
+                                                            </SplitPane>
+                                                         </children>
+                                                      </AnchorPane>
+                                                  </items>
+                                                </SplitPane>
+                                             </children>
+                                          </AnchorPane>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                             <children>
+                                                <TableView fx:id="Items" layoutX="14.0" layoutY="22.0" prefHeight="396.0" prefWidth="578.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                  <columns>
+                                                    <TableColumn fx:id="item_id" prefWidth="68.00001525878906" text="ID" />
+                                                    <TableColumn fx:id="item_title" prefWidth="116.0" text="Title" />
+                                                      <TableColumn fx:id="item_price" prefWidth="91.199951171875" text="Rental price" />
+                                                      <TableColumn fx:id="item_type" prefWidth="96.0" text="Type" />
+                                                      <TableColumn fx:id="item_parametre" prefWidth="117.5999755859375" text="Plateform / actor" />
+                                                      <TableColumn fx:id="is_out" prefWidth="88.00003662109373" text="Is checked out" />
+                                                  </columns>
+                                                </TableView>
+                                             </children>
+                                          </AnchorPane>
+                                      </items>
+                                    </SplitPane>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="22.0" prefWidth="800.0">
+                     <children>
+                        <TextField fx:id="customer_check_name" layoutX="24.0" layoutY="21.0" promptText="Customer's name" />
+                        <TextField fx:id="item_check_title" layoutX="193.0" layoutY="21.0" promptText="Item's title" />
+                        <DatePicker fx:id="due_date" layoutX="366.0" layoutY="21.0" promptText="Due date" />
+                        <Button layoutX="571.0" layoutY="21.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="93.0" text="Check in" />
+                        <Button layoutX="680.0" layoutY="21.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Check out" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

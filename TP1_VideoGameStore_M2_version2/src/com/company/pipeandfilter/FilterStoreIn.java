@@ -56,12 +56,13 @@ public  class FilterStoreIn extends Filter {
             Parent root;
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("../gui/clientList.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("../gui/Menu.fxml"));
                 root = (Parent) fxmlLoader.load();
                 Scene scene = new Scene(root, 630, 400);
                 Stage stage = new Stage();
                 stage.setTitle("New Window");
                 stage.setScene(scene);
+                System.out.println("requete:"+cc.getRequete());
                 stage.show();
             } catch (Exception ex) {
                 ex.printStackTrace();
