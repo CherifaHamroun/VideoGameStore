@@ -5,11 +5,11 @@ import javafx.stage.Stage;
 import java.util.Scanner;
 
 public class Snippet  {
+    public static Pipe p1 = new BlockingQueue();
+    public static Pipe p3 = new BlockingQueue();
     public static void main(String[] args) {
         // TODO Auto-generated method stub
-        Pipe p1 = new BlockingQueue();
         Pipe p2 = new BlockingQueue();
-        Pipe p3 = new BlockingQueue();
         Filter a0 = new FilterStoreIn(null,p1);
         Filter a1 = new FilterQueryProcessor(p1, p2);
         Filter a2 = new FilterTransactionProcessor(p2, p3);

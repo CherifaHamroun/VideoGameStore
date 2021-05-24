@@ -72,8 +72,8 @@
                                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="116.0" prefWidth="210.0">
                                                                      <children>
                                                                         <TextField fx:id="param_found_input" layoutX="31.0" layoutY="14.0" promptText="Title or Actor" />
-                                                                        <Button layoutX="16.0" layoutY="59.0" mnemonicParsing="false" text="Find by title" />
-                                                                        <Button layoutX="113.0" layoutY="59.0" mnemonicParsing="false" text="Find by actor" />
+                                                                        <Button layoutX="16.0" layoutY="59.0" mnemonicParsing="false" text="Find by title" onAction="#FindByTitle"/>
+                                                                        <Button layoutX="113.0" layoutY="59.0" mnemonicParsing="false" text="Find by actor" onAction="#ndByActor" />
                                                                      </children>
                                                                   </AnchorPane>
                                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -82,7 +82,7 @@
                                                                         <TextField fx:id="price_input" layoutX="25.0" layoutY="46.0" promptText="Rental price" />
                                                                         <TextField fx:id="type_input" layoutX="25.0" layoutY="79.0" promptText="Type : Film or game" />
                                                                         <TextField fx:id="param_input" layoutX="25.0" layoutY="112.0" promptText="Actor or plateform" />
-                                                                        <Button layoutX="67.0" layoutY="143.0" mnemonicParsing="false" text="Add item" />
+                                                                        <Button layoutX="67.0" layoutY="143.0" mnemonicParsing="false" text="Add item" onAction="#add_item"/>
                                                                      </children>
                                                                   </AnchorPane>
                                                               </items>
@@ -120,8 +120,8 @@
                         <TextField fx:id="customer_check_name" layoutX="24.0" layoutY="21.0" promptText="Customer's name" />
                         <TextField fx:id="item_check_title" layoutX="193.0" layoutY="21.0" promptText="Item's title" />
                         <DatePicker fx:id="due_date" layoutX="366.0" layoutY="21.0" promptText="Due date" />
-                        <Button layoutX="571.0" layoutY="21.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="93.0" text="Check in" />
-                        <Button layoutX="680.0" layoutY="21.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Check out" />
+                        <Button layoutX="571.0" layoutY="21.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="93.0" text="Check in" onAction="#CheckIN"/>
+                        <Button layoutX="680.0" layoutY="21.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Check out" onAction="#CheckOUT"/>
                      </children>
                   </AnchorPane>
                </children>

@@ -1,9 +1,8 @@
 package com.company.gui;
 
-import com.company.Client;
-import com.company.QueryProcessor;
-import com.company.StockItem;
-import com.company.TransactionProcessor;
+import com.company.*;
+import com.company.pipeandfilter.FilterTransactionProcessor;
+import com.company.pipeandfilter.Snippet;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,16 +20,14 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.logging.Filter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ItemController implements Initializable {
 
-    QueryProcessor qp = new QueryProcessor();
-    TransactionProcessor tp = new TransactionProcessor();
 
     @FXML
     private TextField param_found_input;
@@ -79,6 +76,7 @@ public class ItemController implements Initializable {
 
     public void overDueItems() throws Exception{
         try {
+            Snippet.p1.dataIN("OverdueItems");
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("overdueItemsList.fxml"));
             /*
@@ -96,18 +94,40 @@ public class ItemController implements Initializable {
         }
 
     }
+    public void add_item(){
+        String type ;
+        if (type_input.getText().equalsIgnoreCase("film")){
+            type = "1";
+        }
+        else {
+            type ="0";
+        }
+        Snippet.p1.dataIN("AddStock"+ " "+title_input.getText()+ " "+ price_input.getText()+ " " + param_input.getText()+" "+ type);
+    }
 
+    public void CheckIN() {
+        Snippet.p1.dataIN("CheckIn"+ " "+customer_check_name.getText()+ " "+ item_check_title.getText());
+    }
+    public void CheckOUT() {
+        System.out.println(due_date.getValue());
+        Snippet.p1.dataIN("CheckOut"+ " "+customer_check_name.getText()+ " "+ item_check_title.getText()+ " " + due_date.toString());
+    }
+
+    public void ndByActor(){
+        Snippet.p1.dataIN("ndByActor" + " " + param_found_input);
+    }
+    public void FindByTitle(){
+        Snippet.p1.dataIN("FindByTitle" + " " + param_found_input);
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        this.tp.AddStock("Titanic",1000,"Netflix",1);
-        System.out.println("test");
-        System.out.println(this.tp.getStockList().size());
         item_id.setCellValueFactory(new PropertyValueFactory<StockItem,Integer>("itemID"));
         item_title.setCellValueFactory(new PropertyValueFactory<StockItem,String>("title"));
         item_price.setCellValueFactory(new PropertyValueFactory<StockItem,Float>("rentalPrice"));
-        List<StockItem> values = new ArrayList<StockItem>(tp.getStockList().values());
+
+        List<StockItem> values = new ArrayList<StockItem>(FilterTransactionProcessor.tran.getStockList().values());
         ObservableList<StockItem> items_list = FXCollections.observableArrayList(values);
         Items.setItems(items_list);
+
     }
 }

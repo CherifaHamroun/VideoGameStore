@@ -1,4 +1,6 @@
 package com.company.gui;
+import com.company.pipeandfilter.FilterTransactionProcessor;
+import com.company.pipeandfilter.Snippet;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
@@ -38,21 +40,16 @@ public class ClientController implements Initializable {
     ObservableList<Client> client_list;
     int index =-1;
 
-    public String add_client(){
-        return client_name_input.getText();
+    public void add_client(){
+        Snippet.p1.dataIN("AddCustomer"+ " "+client_name_input.getText());
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.tp.AddCustomer("Katia");
-        this.tp.AddCustomer("Cherifa");
-        this.tp.AddCustomer("Yacine");
-        System.out.println("test");
-        System.out.println(this.tp.getClientList().size());
         customer_id.setCellValueFactory(new PropertyValueFactory<Client,Integer>("customerID"));
         customer_name.setCellValueFactory(new PropertyValueFactory<Client,String>("name"));
         customer_balance.setCellValueFactory(new PropertyValueFactory<Client,Float>("accountBalance"));
-        List<Client> values = new ArrayList<Client>(tp.getClientList().values());
+        List<Client> values = new ArrayList<Client>(FilterTransactionProcessor.tran.getClientList().values());
         ObservableList<Client> client_list = FXCollections.observableArrayList(values);
         Customers.setItems(client_list);
     }

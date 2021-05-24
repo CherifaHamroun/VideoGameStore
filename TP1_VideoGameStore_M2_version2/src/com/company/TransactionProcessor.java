@@ -5,11 +5,7 @@ import com.company.Jeux;
 import com.company.RentedItem;
 import com.company.StockItem;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class TransactionProcessor {
     private Map<String, Client> mapcus=new HashMap<String, Client>();;
@@ -35,10 +31,12 @@ public class TransactionProcessor {
         customer.setAccountBalance(customer.getAccountBalance() + it.getRentalPrice());
         listrented.add(ri);
     }
-    public void CheckIn(String custom, int itemID ,String item){
-        listrented.removeIf( T -> (T.getItemID() == itemID));
+    public void CheckIn(String custom,String titre){
+        int found = 0;
+        int id = mapstk.get(titre).getItemID();
+        listrented.removeIf( T -> (T.getItemID() == id));
         Client customer = mapcus.get(custom);
-        StockItem it = mapstk.get(item);
+        StockItem it = mapstk.get(titre);
         customer.setAccountBalance(customer.getAccountBalance() - it.getRentalPrice());
     }
     public void AddCustomer( String nom ){

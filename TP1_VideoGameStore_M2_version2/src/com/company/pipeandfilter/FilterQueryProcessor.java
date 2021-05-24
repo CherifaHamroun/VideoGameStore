@@ -65,7 +65,7 @@ public  class FilterQueryProcessor extends Filter {
                 break;
             case "CheckIn":
                 // code block
-                String ch = params[0]+ " " + params[1] + " " + params[2]+ " " + params[3];
+                String ch = params[0]+ " " + params[1] + " " + params[2];
                 this.sendData(ch);
                 break;
             case "AddCustomer":

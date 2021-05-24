@@ -15,11 +15,11 @@ public  class FilterTransactionProcessor extends Filter {
 
     Pipe _dataINPipe;
     Pipe _dataOUTPipe;
-    Map<String, Client> mapCus = new HashMap<>();
-    Map<String, StockItem> mapStk = new HashMap<>();
-    ArrayList<RentedItem> rented = new ArrayList<RentedItem>();
-    QueryProcessor query = new QueryProcessor(mapCus,mapStk,rented);
-    TransactionProcessor tran = new TransactionProcessor(mapCus,mapStk,rented);
+    public static Map<String, Client> mapCus = new HashMap<>();
+    public static Map<String, StockItem> mapStk = new HashMap<>();
+    public static ArrayList<RentedItem> rented = new ArrayList<RentedItem>();
+    public static QueryProcessor query = new QueryProcessor(mapCus,mapStk,rented);
+    public static TransactionProcessor tran = new TransactionProcessor(mapCus,mapStk,rented);
 
     public String getData(){
         return _dataINPipe.dataOUT();
@@ -79,14 +79,14 @@ public  class FilterTransactionProcessor extends Filter {
                 break;
             case "CheckOut":
                 // code block
-                String sDate1=params[2];
+                String sDate1=params[3];
                 Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
-                tran.CheckOut(params[1],date1,params[3]);
+                tran.CheckOut(params[1],date1,params[2]);
                 sendData("Done");
                 break;
             case "CheckIn":
                 // code block
-                tran.CheckIn(params[1],Integer.parseInt(params[2]),params[3]);
+                tran.CheckIn(params[1],params[2]);
                 sendData("Done");
                 break;
             case "AddCustomer":
