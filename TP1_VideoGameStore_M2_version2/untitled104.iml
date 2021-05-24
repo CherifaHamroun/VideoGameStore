@@ -7,6 +7,28 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar:///usr/share/openjfx/lib/javafx.base.jar!/" />
+          <root url="jar:///usr/share/openjfx/lib/javafx.web.jar!/" />
+          <root url="jar:///usr/share/openjfx/lib/javafx.media.jar!/" />
+          <root url="jar:///usr/share/openjfx/lib/javafx.graphics.jar!/" />
+          <root url="jar:///usr/share/openjfx/lib/javafx.fxml.jar!/" />
+          <root url="jar:///usr/share/openjfx/lib/javafx.swing.jar!/" />
+          <root url="jar:///usr/share/openjfx/lib/javafx.controls.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar:///usr/share/openjfx/lib/src.zip!/javafx.base" />
+          <root url="jar:///usr/share/openjfx/lib/src.zip!/javafx.controls" />
+          <root url="jar:///usr/share/openjfx/lib/src.zip!/javafx.fxml" />
+          <root url="jar:///usr/share/openjfx/lib/src.zip!/javafx.graphics" />
+          <root url="jar:///usr/share/openjfx/lib/src.zip!/javafx.media" />
+          <root url="jar:///usr/share/openjfx/lib/src.zip!/javafx.swing" />
+          <root url="jar:///usr/share/openjfx/lib/src.zip!/javafx.web" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>
-
