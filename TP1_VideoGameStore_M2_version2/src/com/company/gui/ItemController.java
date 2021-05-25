@@ -206,13 +206,12 @@ public class ItemController implements Initializable,Gestionnaire {
             data.setPrice(values.get(i).getRentalPrice());
             String t = values.get(i).getClass().getName().replace("com.company.","");
             data.setType(t);
-            System.out.println(t);
-            if (t=="Film") {
+            if (data.getType().equals("Film")) {
                 Film f = (Film)values.get(i);
                 data.setParam(f.getActor());
             }
             else {
-                if (t=="Jeux") {
+                if (data.getType().equals("Jeux")) {
                     Jeux j = (Jeux) values.get(i);
                     data.setParam(j.getPlatform());
                 }

@@ -123,14 +123,14 @@ public class films_gamesController implements Initializable,Gestionnaire {
             data.setID(id);
             data.setTitle(values.get(i).getTitle());
             data.setPrice(values.get(i).getRentalPrice());
-            data.setType(values.get(i).getClass().getName());
-
-            if (data.getType()=="com.company.Film") {
+            String t = values.get(i).getClass().getName().replace("com.company.","");
+            data.setType(t);
+            if (data.getType().equals("Film")) {
                 Film f = (Film)values.get(i);
                 data.setParam(f.getActor());
             }
             else {
-                if (data.getType()=="com.company.Jeux") {
+                if (data.getType().equals("Jeux")) {
                     Jeux j = (Jeux) values.get(i);
                     data.setParam(j.getPlatform());
                 }
