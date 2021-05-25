@@ -140,14 +140,20 @@ public class ItemController implements Initializable,Gestionnaire {
         Snippet.p1.dataIN("AddStock"+ " "+title_input.getText()+ " "+ price_input.getText()+ " " + param_input.getText()+" "+ type);
     }
     public void add_item(ActionEvent e) throws IOException {
-        String type ;
+        String type = null;
         if (type_input.getText().equalsIgnoreCase("film")){
             type = "1";
+            Snippet.p1.dataIN("AddStock"+ " "+title_input.getText()+ " "+ price_input.getText()+ " " + param_input.getText()+" "+ type);
+
         }
         else {
-            type ="0";
+            if (type_input.getText().equalsIgnoreCase("jeux")) {
+                type = "0";
+                Snippet.p1.dataIN("AddStock"+ " "+title_input.getText()+ " "+ price_input.getText()+ " " + param_input.getText()+" "+ type);
+
+            }
+            else System.out.println("No Matching Type");
         }
-        Snippet.p1.dataIN("AddStock"+ " "+title_input.getText()+ " "+ price_input.getText()+ " " + param_input.getText()+" "+ type);
         changeSceneButtonPushed(e,"itemList.fxml");
 
     }
@@ -198,15 +204,18 @@ public class ItemController implements Initializable,Gestionnaire {
             data.setID(values.get(i).getItemID());
             data.setTitle(values.get(i).getTitle());
             data.setPrice(values.get(i).getRentalPrice());
-            data.setType(values.get(i).getClass().getName());
-
-            if (data.getType()=="com.company.Film") {
+            String t = values.get(i).getClass().getName().replace("com.company.","");
+            data.setType(t);
+            System.out.println(t);
+            if (t=="Film") {
                 Film f = (Film)values.get(i);
                 data.setParam(f.getActor());
             }
             else {
-                Jeux j= (Jeux) values.get(i);
-                data.setParam(j.getPlatform());
+                if (t=="Jeux") {
+                    Jeux j = (Jeux) values.get(i);
+                    data.setParam(j.getPlatform());
+                }
             }
             Snippet.p1.dataIN("IsCheckedOut"+" "+ data.getTitle());
             String isC = Snippet.p3.dataOUT();

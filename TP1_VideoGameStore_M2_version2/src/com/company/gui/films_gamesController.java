@@ -130,8 +130,10 @@ public class films_gamesController implements Initializable,Gestionnaire {
                 data.setParam(f.getActor());
             }
             else {
-                Jeux j= (Jeux) values.get(i);
-                data.setParam(j.getPlatform());
+                if (data.getType()=="com.company.Jeux") {
+                    Jeux j = (Jeux) values.get(i);
+                    data.setParam(j.getPlatform());
+                }
             }
             Snippet.p1.dataIN("IsCheckedOut"+" "+ data.getTitle());
             String isC = Snippet.p3.dataOUT();

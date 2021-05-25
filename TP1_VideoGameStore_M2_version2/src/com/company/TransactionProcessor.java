@@ -28,8 +28,11 @@ public class TransactionProcessor {
         Client customer = mapcus.get(custom);
         StockItem it = mapstk.get(item);
         RentedItem ri = new RentedItem(customer.getCustomerID(),it.getItemID(),dueDate);
-        customer.setAccountBalance(customer.getAccountBalance() - it.getRentalPrice());
-        listrented.add(ri);
+        if (customer.getAccountBalance() - it.getRentalPrice()>0) {
+            customer.setAccountBalance(customer.getAccountBalance() - it.getRentalPrice());
+            listrented.add(ri);
+        }
+        else System.out.println("Solde Non Sufficient");
     }
     public void CheckIn(String custom,String titre){
         int id = mapstk.get(titre).getItemID();
