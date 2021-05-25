@@ -47,7 +47,8 @@ public class ClientController implements Initializable,Gestionnaire{
     private TableColumn<Client, Float> customer_balance;
     @FXML
     private TextField client_name_input;
-
+    @FXML
+    private TextField client_solde_input;
     ObservableList<Client> client_list;
     int index =-1;
 
@@ -58,7 +59,7 @@ public class ClientController implements Initializable,Gestionnaire{
         changeSceneButtonPushed(e,"Menu.fxml");
     }
     public void add_client(ActionEvent e) throws IOException {
-        Snippet.p1.dataIN("AddCustomer"+ " "+client_name_input.getText());
+        Snippet.p1.dataIN("AddCustomer"+ " "+client_name_input.getText()+" "+client_solde_input.getText());
         changeSceneButtonPushed(e,"clientList.fxml");
 
     }

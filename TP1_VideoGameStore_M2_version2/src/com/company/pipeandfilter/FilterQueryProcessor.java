@@ -70,7 +70,7 @@ public  class FilterQueryProcessor extends Filter {
                 break;
             case "AddCustomer":
                 // code block
-                    String data2 = params[0]+ " " + params[1];
+                    String data2 = params[0]+ " " + params[1]+" "+params[2];
                     this.sendData(data2);
                 break;
             case "AddStock":

@@ -151,12 +151,13 @@ public class ItemController implements Initializable,Gestionnaire {
         changeSceneButtonPushed(e,"itemList.fxml");
 
     }
-    public void CheckIN() {
+    public void CheckIN(ActionEvent e) throws IOException {
         Snippet.p1.dataIN("CheckIn"+ " "+customer_check_name.getText()+ " "+ item_check_title.getText());
+        changeSceneButtonPushed(e,"itemList.fxml");
     }
-    public void CheckOUT() {
-        System.out.println(due_date.getValue());
+    public void CheckOUT(ActionEvent e) throws IOException {
         Snippet.p1.dataIN("CheckOut"+ " "+customer_check_name.getText()+ " "+ item_check_title.getText()+ " " + due_date.getValue().toString());
+        changeSceneButtonPushed(e,"itemList.fxml");
     }
 
 
@@ -207,17 +208,14 @@ public class ItemController implements Initializable,Gestionnaire {
                 Jeux j= (Jeux) values.get(i);
                 data.setParam(j.getPlatform());
             }
-
             Snippet.p1.dataIN("IsCheckedOut"+" "+ data.getTitle());
             String isC = Snippet.p3.dataOUT();
-
-            if (isC == "1") isC = "Yes";
+            if (isC.equals("1") )isC = "Yes";
             else isC = "No";
             data.setIsCheckedOut(isC);
             l.add(data);
         }
         ObservableList<Data> items_list = FXCollections.observableArrayList(l);
         Items.setItems(items_list);
-
     }
 }

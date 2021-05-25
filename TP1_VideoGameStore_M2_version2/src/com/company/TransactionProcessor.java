@@ -28,20 +28,18 @@ public class TransactionProcessor {
         Client customer = mapcus.get(custom);
         StockItem it = mapstk.get(item);
         RentedItem ri = new RentedItem(customer.getCustomerID(),it.getItemID(),dueDate);
-        customer.setAccountBalance(customer.getAccountBalance() + it.getRentalPrice());
+        customer.setAccountBalance(customer.getAccountBalance() - it.getRentalPrice());
         listrented.add(ri);
     }
     public void CheckIn(String custom,String titre){
-        int found = 0;
         int id = mapstk.get(titre).getItemID();
         listrented.removeIf( T -> (T.getItemID() == id));
         Client customer = mapcus.get(custom);
         StockItem it = mapstk.get(titre);
-        customer.setAccountBalance(customer.getAccountBalance() - it.getRentalPrice());
     }
-    public void AddCustomer( String nom ){
+    public void AddCustomer( String nom,Float solde ){
         if (!mapcus.containsKey(nom)){
-            Client cl = new Client(mapcus.size()+1,0,nom);
+            Client cl = new Client(mapcus.size()+1,solde,nom);
             mapcus.put(nom,cl);
         }
 

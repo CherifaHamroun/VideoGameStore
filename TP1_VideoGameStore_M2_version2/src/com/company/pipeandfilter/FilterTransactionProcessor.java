@@ -96,7 +96,6 @@ public  class FilterTransactionProcessor extends Filter {
             case "CheckOut":
                 // code block
                 String sDate1=params[3];
-                System.out.println(sDate1);
                 Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(sDate1);
                 this.tran.CheckOut(params[1],date1,params[2]);
                 //sendData("Done");
@@ -109,7 +108,7 @@ public  class FilterTransactionProcessor extends Filter {
                 break;
             case "AddCustomer":
                 // code block
-                    this.tran.AddCustomer(params[1]);
+                    this.tran.AddCustomer(params[1],Float.parseFloat(params[2]));
                    // sendData("Done");
                 break;
             case "AddStock":
