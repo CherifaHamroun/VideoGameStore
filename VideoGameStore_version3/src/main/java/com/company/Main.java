@@ -1,3 +1,4 @@
+package com.company;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +11,7 @@ import javafx.stage.StageStyle;
 public class Main extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root =FXMLLoader.load((getClass().getResource("clientList.fxml")));
+        Parent root =FXMLLoader.load((getClass().getResource("/Menu.fxml")));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

@@ -15,10 +15,10 @@ import java.util.logging.Logger;
 public class MenuController implements Gestionnaire {
 
     public void OnActionAfficherClient(ActionEvent e) throws IOException{
-        changeSceneButtonPushed(e,"clientList.fxml");
+        changeSceneButtonPushed(e,"/clientList.fxml");
     }
     public void OnActionAfficherItems(ActionEvent e) throws IOException{
-        changeSceneButtonPushed(e,"itemList.fxml");
+        changeSceneButtonPushed(e,"/itemList.fxml");
     }
     public void voirClient(){
         try {

@@ -8,7 +8,7 @@ public interface ClientMetier {
         ClientEntity cl = new ClientEntity();
         cl.setName(nom);
         cl.setAccountBalance(solde);
-        cl.setCustomerId(3);
+        cl.setCustomerId(4);
         cp.CreateClient(cl);
     }
 }

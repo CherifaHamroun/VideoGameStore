@@ -23,7 +23,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="11" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.24" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.11.4" level="project" />
@@ -51,16 +51,16 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-commons:1.7.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.7.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.7.1" level="project" />
-    <orderEntry type="module-library" scope="RUNTIME">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
           <root url="jar:///usr/share/openjfx/lib/javafx.base.jar!/" />
-          <root url="jar:///usr/share/openjfx/lib/javafx.controls.jar!/" />
           <root url="jar:///usr/share/openjfx/lib/javafx.fxml.jar!/" />
-          <root url="jar:///usr/share/openjfx/lib/javafx.swing.jar!/" />
+          <root url="jar:///usr/share/openjfx/lib/javafx.media.jar!/" />
           <root url="jar:///usr/share/openjfx/lib/javafx.graphics.jar!/" />
           <root url="jar:///usr/share/openjfx/lib/javafx.web.jar!/" />
-          <root url="jar:///usr/share/openjfx/lib/javafx.media.jar!/" />
+          <root url="jar:///usr/share/openjfx/lib/javafx.controls.jar!/" />
+          <root url="jar:///usr/share/openjfx/lib/javafx.swing.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
