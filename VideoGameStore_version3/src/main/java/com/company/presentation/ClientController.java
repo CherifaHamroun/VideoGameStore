@@ -49,11 +49,11 @@ public class ClientController implements Initializable,Gestionnaire{
     ObservableList<ClientEntity> client_list;
     int index =-1;
     public void OnActionGoBack(ActionEvent e) throws IOException {
-        changeSceneButtonPushed(e,"Menu.fxml");
+        changeSceneButtonPushed(e,"/Menu.fxml");
     }
     public void add_client(ActionEvent e) throws IOException {
         ClientMetier.AddCustomer(client_name_input.getText(),Double.parseDouble(client_solde_input.getText()));
-        changeSceneButtonPushed(e,"clientList.fxml");
+        changeSceneButtonPushed(e,"/clientList.fxml");
 
     }
     public void goBack(){

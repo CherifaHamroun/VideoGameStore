@@ -1,5 +1,7 @@
 package com.company.metier;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,6 +12,8 @@ public class ClientEntity {
     private String name;
 
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
+    @GenericGenerator(name = "native",strategy = "native")
     @Column(name = "customerID")
     public Integer getCustomerId() {
         return customerId;
