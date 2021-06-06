@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "RentedItem", schema = "db_VideoGameStore", catalog = "")
+@Table(name = "RentedItem", schema = "db_VideoGameStore")
 public class RentedItemEntity {
     private Integer customerId;
     private Integer itemId;
@@ -62,14 +62,5 @@ public class RentedItemEntity {
         result = 31 * result + (itemId != null ? itemId.hashCode() : 0);
         result = 31 * result + (dueDate != null ? dueDate.hashCode() : 0);
         return result;
-    }
-
-    @OneToOne(optional = false)
-    public StockItemEntity getItemID() {
-        return itemID;
-    }
-
-    public void setItemID(StockItemEntity itemID) {
-        this.itemID = itemID;
     }
 }

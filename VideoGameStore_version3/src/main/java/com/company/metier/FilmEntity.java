@@ -3,7 +3,7 @@ package com.company.metier;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Film", schema = "db_VideoGameStore", catalog = "")
+@Table(name = "Film", schema = "db_VideoGameStore")
 public class FilmEntity {
     private String actor;
     private Integer itemId;

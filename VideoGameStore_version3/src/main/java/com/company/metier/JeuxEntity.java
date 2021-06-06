@@ -3,7 +3,7 @@ package com.company.metier;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Jeux", schema = "db_VideoGameStore", catalog = "")
+@Table(name = "Jeux", schema = "db_VideoGameStore")
 public class JeuxEntity {
     private String platform;
     private Integer itemId;

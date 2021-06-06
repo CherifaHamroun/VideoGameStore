@@ -1,9 +1,11 @@
 package com.company.metier;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "StockItem", schema = "db_VideoGameStore", catalog = "")
+@Table(name = "StockItem", schema = "db_VideoGameStore")
 public class StockItemEntity {
     private Integer itemId;
     private String title;
@@ -11,6 +13,8 @@ public class StockItemEntity {
     private RentedItemEntity itemID;
 
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
+    @GenericGenerator(name = "native",strategy = "native")
     @Column(name = "itemID")
     public Integer getItemId() {
         return itemId;
@@ -60,14 +64,5 @@ public class StockItemEntity {
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + (rentalPrice != null ? rentalPrice.hashCode() : 0);
         return result;
-    }
-
-    @OneToOne(mappedBy = "itemID", optional = false)
-    public RentedItemEntity getItemID() {
-        return itemID;
-    }
-
-    public void setItemID(RentedItemEntity itemID) {
-        this.itemID = itemID;
     }
 }

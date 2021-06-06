@@ -1,33 +1,25 @@
 package com.company.presentation;
 import com.company.metier.ClientEntity;
-import com.company.metier.ClientMetier;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
+import com.company.metier.ITransactionMetier;
+import com.company.metier.TransactionMetier;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.company.*;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
-import javax.swing.*;
 
 public class ClientController implements Initializable,Gestionnaire{
 
@@ -48,13 +40,13 @@ public class ClientController implements Initializable,Gestionnaire{
     private TextField client_solde_input;
     ObservableList<ClientEntity> client_list;
     int index =-1;
+    ITransactionMetier tr = new TransactionMetier();
     public void OnActionGoBack(ActionEvent e) throws IOException {
         changeSceneButtonPushed(e,"/Menu.fxml");
     }
     public void add_client(ActionEvent e) throws IOException {
-        ClientMetier.AddCustomer(client_name_input.getText(),Double.parseDouble(client_solde_input.getText()));
+        tr.addCustomer(client_name_input.getText(),Double.parseDouble(client_solde_input.getText()));
         changeSceneButtonPushed(e,"/clientList.fxml");
-
     }
     public void goBack(){
         try {
