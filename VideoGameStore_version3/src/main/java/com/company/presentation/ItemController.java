@@ -1,8 +1,7 @@
 package com.company.presentation;
 
 import com.company.*;
-import com.company.metier.ITransactionMetier;
-import com.company.metier.TransactionMetier;
+import com.company.metier.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -129,7 +128,7 @@ ITransactionMetier tm = new TransactionMetier();
 
     @FXML
     private DatePicker due_date;
-
+    IQueryMetier qm = new QueryMetier();
     public void add_item(ActionEvent e) throws IOException {
         int type=0;
         if (type_input.getText().equalsIgnoreCase("film")){
@@ -163,13 +162,13 @@ ITransactionMetier tm = new TransactionMetier();
         changeSceneButtonPushed(e,"/Menu.fxml");
     }
     public void FindByTitle(ActionEvent e) throws IOException{
-
+        films_gamesController.dataSent = param_found_input.getText();
         changeSceneButtonPushed(e,"/films_games.fxml");
 
     }
     public void ndByActor(ActionEvent e) throws IOException{
-
-        changeSceneButtonPushed(e,"/films_games.fxml");
+        ActorController.dataSent = param_found_input.getText();
+        changeSceneButtonPushed(e,"/actors.fxml");
 
     }
     public void overDueItems(ActionEvent e) throws IOException{
@@ -186,6 +185,21 @@ ITransactionMetier tm = new TransactionMetier();
         item_type.setCellValueFactory(new PropertyValueFactory<Data,String>("Type"));
         item_parametre.setCellValueFactory(new PropertyValueFactory<Data,String>("param"));
         is_out.setCellValueFactory(new PropertyValueFactory<Data,String>("isCheckedOut"));
-
+        List<StockItemEntity> values = new ArrayList<StockItemEntity>(qm.getItems());
+        List<Data> l = new ArrayList<>();
+        for (int i=0;i<values.size();i++){
+            Data data = new Data();
+            data.setID(values.get(i).getItemId());
+            data.setTitle(values.get(i).getTitle());
+            data.setPrice(values.get(i).getRentalPrice());
+            String[] s= qm.getTypeParam(values.get(i).getItemId()).split(";");
+            data.setParam(s[1]);
+            data.setType(s[0]);
+            String isC = qm.isCheckedOut(values.get(i).getItemId());
+            data.setIsCheckedOut(isC);
+            l.add(data);
+        }
+        ObservableList<Data> items_list = FXCollections.observableArrayList(l);
+        Items.setItems(items_list);
     }
 }

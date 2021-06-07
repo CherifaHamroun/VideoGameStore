@@ -1,4 +1,7 @@
 package com.company.presentation;
+import com.company.metier.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -7,13 +10,15 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class OverdueItemsListController implements Initializable,Gestionnaire {
     public class Data {
         public Integer ID;
         public String title;
-        public Float price;
+        public Double price;
         public String Type;
         public String param;
         public String isCheckedOut;
@@ -41,11 +46,11 @@ public class OverdueItemsListController implements Initializable,Gestionnaire {
             this.title = title;
         }
 
-        public Float getPrice() {
+        public Double getPrice() {
             return price;
         }
 
-        public void setPrice(Float price) {
+        public void setPrice(Double price) {
             this.price = price;
         }
 
@@ -83,11 +88,11 @@ public class OverdueItemsListController implements Initializable,Gestionnaire {
 
     @FXML
     private TableColumn<Data, String > item_parametre;
-
+    IQueryMetier qm = new QueryMetier();
     @FXML
     private TableColumn<Data, String> is_out;
     public void OnActionGoBack(ActionEvent e) throws IOException {
-        changeSceneButtonPushed(e,"Menu.fxml");
+        changeSceneButtonPushed(e,"/itemList.fxml");
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -97,5 +102,23 @@ public class OverdueItemsListController implements Initializable,Gestionnaire {
         item_type.setCellValueFactory(new PropertyValueFactory<Data, String>("Type"));
         item_parametre.setCellValueFactory(new PropertyValueFactory<Data, String>("param"));
         is_out.setCellValueFactory(new PropertyValueFactory<Data, String>("isCheckedOut"));
+        List<RentedItemEntity> values = new ArrayList<RentedItemEntity>(qm.overdueItems());
+        ObservableList<RentedItemEntity> over = FXCollections.observableArrayList(values);
+        List<Data> l = new ArrayList<>();
+        for (int i=0;i<values.size();i++){
+            Data data = new Data();
+            data.setID(values.get(i).getItemId());
+            String[] s= qm.getTypeParam(values.get(i).getItemId()).split(";");
+            data.setParam(s[1]);
+            data.setType(s[0]);
+            StockItemEntity stk = qm.findItemById(values.get(i).getItemId());
+            data.setPrice(stk.getRentalPrice());
+            data.setTitle(stk.getTitle());
+            String isC = qm.isCheckedOut(values.get(i).getItemId());
+            data.setIsCheckedOut(isC);
+            l.add(data);
+        }
+        ObservableList<Data> items_list = FXCollections.observableArrayList(l);
+        Items.setItems(items_list);
     }
     }

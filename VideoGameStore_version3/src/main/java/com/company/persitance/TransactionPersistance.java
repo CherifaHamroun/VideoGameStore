@@ -34,7 +34,7 @@ public class TransactionPersistance implements ITransactionPersistance {
         EntityTransaction tr= em.getTransaction();
         try{
             tr.begin();
-            em.find(ClientEntity.class, c.getCustomerId());
+            em.find(ClientEntity.class, c.getCustomerID());
             c.setAccountBalance(balance);
             tr.commit();
         }
@@ -131,7 +131,7 @@ public class TransactionPersistance implements ITransactionPersistance {
         EntityTransaction tr= em.getTransaction();
         try{
             tr.begin();
-            em.remove(r);
+            em.remove(em.contains(r) ? r : em.merge(r));
             tr.commit();
         }
         finally {

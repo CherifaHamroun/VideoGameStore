@@ -1,12 +1,13 @@
 package com.company.metier;
-
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
 @Entity
+@NamedQuery(name=ClientEntity.FIND_ALL,query = "SELECT c FROM ClientEntity c")
 @Table(name = "Client", schema = "db_VideoGameStore")
 public class ClientEntity {
+    public static final String FIND_ALL = "ClientEntity.FIND_ALL";
     private Integer customerId;
     private Double accountBalance;
     private String name;
@@ -15,11 +16,11 @@ public class ClientEntity {
     @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
     @GenericGenerator(name = "native",strategy = "native")
     @Column(name = "customerID")
-    public Integer getCustomerId() {
+    public Integer getCustomerID() {
         return customerId;
     }
 
-    public void setCustomerId(Integer customerId) {
+    public void setCustomerID(Integer customerId) {
         this.customerId = customerId;
     }
 

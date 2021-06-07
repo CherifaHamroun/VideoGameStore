@@ -5,12 +5,14 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
+@NamedQuery(name=StockItemEntity.FIND_ALL,query = "SELECT s FROM StockItemEntity s")
 @Table(name = "StockItem", schema = "db_VideoGameStore")
 public class StockItemEntity {
     private Integer itemId;
     private String title;
     private Double rentalPrice;
     private RentedItemEntity itemID;
+    public static final String FIND_ALL = "StockItemEntity.FIND_ALL";
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO,generator="native")

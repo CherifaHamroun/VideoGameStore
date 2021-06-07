@@ -11,10 +11,16 @@ import javafx.stage.StageStyle;
 public class Main extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root =FXMLLoader.load((getClass().getResource("/Menu.fxml")));
-        primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        Parent root;
+        fxmlLoader.setLocation(getClass().getResource("/Menu.fxml"));
+        root = (Parent) fxmlLoader.load();
+        Scene scene = new Scene(root, 630, 400);
+        Stage stage = new Stage();
+        stage.setTitle("New Window");
+        stage.setScene(scene);
+        stage.show();
     }
     public static void main(String[] args) {
         launch(args);

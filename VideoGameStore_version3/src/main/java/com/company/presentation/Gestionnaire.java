@@ -17,4 +17,5 @@ public interface Gestionnaire {
         window.setScene(tableViewScene);
         window.show();
     }
+
     }

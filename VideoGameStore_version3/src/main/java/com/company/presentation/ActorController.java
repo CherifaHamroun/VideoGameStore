@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class films_gamesController implements Initializable,Gestionnaire {
+public class ActorController implements Initializable,Gestionnaire {
     public class Data {
         public Integer ID;
         public String title;
@@ -96,6 +96,7 @@ public class films_gamesController implements Initializable,Gestionnaire {
     private TableColumn<Data, String> is_out;
 
     public void OnActionGoBack(ActionEvent e) throws IOException {
+
         changeSceneButtonPushed(e, "/itemList.fxml");
     }
     IQueryMetier qm=new QueryMetier();
@@ -108,18 +109,22 @@ public class films_gamesController implements Initializable,Gestionnaire {
         item_type.setCellValueFactory(new PropertyValueFactory<Data, String>("Type"));
         item_param.setCellValueFactory(new PropertyValueFactory<Data, String>("param"));
         is_out.setCellValueFactory(new PropertyValueFactory<Data, String>("isCheckedOut"));
-        StockItemEntity value = qm.findItemByTitle(dataSent);
+        List<Integer> values = new ArrayList<Integer>(qm.findByActor(dataSent));
+        List<Data> l = new ArrayList<>();
+        for (int i=0;i<values.size();i++){
             Data data = new Data();
-            data.setID(value.getItemId());
-            data.setTitle(value.getTitle());
-            data.setPrice(value.getRentalPrice());
-            String[] s= qm.getTypeParam(value.getItemId()).split(";");
+            StockItemEntity stk = qm.findItemById(values.get(i));
+            data.setID(stk.getItemId());
+            data.setTitle(stk.getTitle());
+            data.setPrice(stk.getRentalPrice());
+            String[] s= qm.getTypeParam(stk.getItemId()).split(";");
             data.setParam(s[1]);
             data.setType(s[0]);
-            String isC = qm.isCheckedOut(value.getItemId());
+            String isC = qm.isCheckedOut(stk.getItemId());
             data.setIsCheckedOut(isC);
-        ObservableList<Data> items_list = FXCollections.observableArrayList(data);
+            l.add(data);
+        }
+        ObservableList<Data> items_list = FXCollections.observableArrayList(l);
         Items.setItems(items_list);
     }
-
-    }
+}

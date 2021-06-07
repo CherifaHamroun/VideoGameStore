@@ -1,7 +1,6 @@
 package com.company.presentation;
-import com.company.metier.ClientEntity;
-import com.company.metier.ITransactionMetier;
-import com.company.metier.TransactionMetier;
+import com.company.metier.*;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +12,8 @@ import javafx.scene.control.TableView;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,6 +42,7 @@ public class ClientController implements Initializable,Gestionnaire{
     ObservableList<ClientEntity> client_list;
     int index =-1;
     ITransactionMetier tr = new TransactionMetier();
+    IQueryMetier qm = new QueryMetier();
     public void OnActionGoBack(ActionEvent e) throws IOException {
         changeSceneButtonPushed(e,"/Menu.fxml");
     }
@@ -67,8 +69,8 @@ public class ClientController implements Initializable,Gestionnaire{
         customer_id.setCellValueFactory(new PropertyValueFactory<ClientEntity,Integer>("customerID"));
         customer_name.setCellValueFactory(new PropertyValueFactory<ClientEntity,String>("name"));
         customer_balance.setCellValueFactory(new PropertyValueFactory<ClientEntity,Double>("accountBalance"));
-        //List<ClientEntity> values = new ArrayList<ClientEntity>(FilterTransactionProcessor.tran.getClientList().values());
-        //ObservableList<ClientEntity> client_list = FXCollections.observableArrayList(values);
-        //Customers.setItems(client_list);
+        List<ClientEntity> values = qm.getClients();
+        ObservableList<ClientEntity> client_list = FXCollections.observableArrayList(values);
+        Customers.setItems(client_list);
     }
 }

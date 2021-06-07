@@ -4,12 +4,13 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
+@NamedQuery(name=RentedItemEntity.FIND_OVERDUE,query = "SELECT r FROM RentedItemEntity r WHERE current_date > r.dueDate")
 @Table(name = "RentedItem", schema = "db_VideoGameStore")
 public class RentedItemEntity {
     private Integer customerId;
     private Integer itemId;
     private Date dueDate;
-    private StockItemEntity itemID;
+    public static final String FIND_OVERDUE = "RentedItemEntity.FIND_OVERDUE";
 
     @Basic
     @Column(name = "customerID")
@@ -63,4 +64,8 @@ public class RentedItemEntity {
         result = 31 * result + (dueDate != null ? dueDate.hashCode() : 0);
         return result;
     }
+    public String toString(){
+        return "Rented Item "+getItemId()+ " "+ getCustomerId() + " "+ getDueDate();
+    }
+
 }

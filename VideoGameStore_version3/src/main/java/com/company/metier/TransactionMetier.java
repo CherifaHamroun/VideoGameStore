@@ -45,7 +45,7 @@ public class TransactionMetier implements ITransactionMetier {
         ClientEntity c = qp.findCustomerByName(customer);
         StockItemEntity s = qp.findStockByTitle(item);
         RentedItemEntity ri = new RentedItemEntity();
-        ri.setCustomerId(c.getCustomerId());
+        ri.setCustomerId(c.getCustomerID());
         java.sql.Date sqlDate = new java.sql.Date(dueDate.getTime());
         ri.setDueDate(sqlDate);
         ri.setItemId(s.getItemId());
@@ -60,7 +60,8 @@ public class TransactionMetier implements ITransactionMetier {
     public void CheckIn(String customer, String item) {
         StockItemEntity s = qp.findStockByTitle(item);
         ClientEntity c = qp.findCustomerByName(customer);
-        RentedItemEntity r = qp.findRentedItem(s.getItemId(),c.getCustomerId());
+        RentedItemEntity r = qp.findRentedItem(c.getCustomerID(),s.getItemId());
+        //System.out.println(r);
         tp.deleteRentedItem(r);
     }
 }

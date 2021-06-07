@@ -9,7 +9,7 @@
 
 
 <?import javafx.scene.control.Button?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.gui.films_gamesController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.presentation.films_gamesController">
    <children>
       <SplitPane dividerPositions="0.18415775401069517" layoutX="201.0" layoutY="55.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -20,7 +20,7 @@
                         <Font size="30.0" />
                      </font>
                   </Text>
-                   <Button layoutX="36.0" layoutY="16.0" mnemonicParsing="false" onAction="#OnActionGoBack" text="Go back to menu" />
+                   <Button layoutX="36.0" layoutY="16.0" mnemonicParsing="false" onAction="#OnActionGoBack" text="Go back" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
